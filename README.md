@@ -1,6 +1,7 @@
 # RESUMEN SEGUNDO PARCIAL CM
 ## MAPAS
 New Activity -> Gallery
+
 • Se utiliza el asistente de creación de
 actividades
 
