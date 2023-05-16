@@ -331,7 +331,7 @@ específica, reemplazando cualquier dato existente en esa ruta. Puede utilizar e
 • Pasar un objeto Java personalizado, si la clase que lo define tiene un constructor
 predeterminado que no toma argumentos y tiene captadores públicos para las propiedades
 que se van a asignar.
-Firebase Realtime Database – Escribir Objetos
+## Firebase Realtime Database – Escribir Objetos
 • Definir un objeto POJO, con getters públicos, y un constructor sin argumentos.
 public class MyUser {
 var name: String = “” //...}
