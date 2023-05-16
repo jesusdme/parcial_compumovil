@@ -1,0 +1,62 @@
+//
+//  ContentView.swift
+//  iOS_ICM
+//
+//  Created by Oscar M on 9/05/23.
+//
+
+import SwiftUI
+
+struct ContentView: View {
+    //VARIABLES DE ENTRADA O ESTADOS
+    @State var nombre = "Oscar Martinez"
+    @State var selection: Int?
+    
+    var body: some View {
+        //OBJETOS
+        
+        NavigationView {
+            VStack {
+                Image("img1")
+                    .resizable()
+                    .frame(width: 200, height: 200)
+                    .padding(10)
+                    .background(Color.gray)
+                    .clipShape(Circle())
+                    .shadow(radius: 20)
+                Text(nombre)
+                    .font(.title)
+                    .foregroundColor(.blue)
+                Text("PUJA")
+                    .foregroundColor(.red)
+                    .font(.title2)
+                Text("15")
+                    .font(.title3)
+                
+                Spacer()
+                
+                HStack {
+                    Button("Cambiar Nombre")
+                    {
+                        self.nombre = "Oscar Martinez"
+                    }
+                    .font(.headline)
+                    Spacer()
+                    NavigationLink(destination:Pantalla2View(nombreAntiguo: $nombre), tag: 1, selection:  $selection)
+                    {
+                        Button("Ir Pantalla2") {
+                            selection = 1
+                        }
+                        .font(.headline)
+                    }
+                }
+            }.padding(50)
+        }
+    }
+}
+
+struct ContentView_Previews: PreviewProvider {
+    static var previews: some View {
+        ContentView()
+    }
+}
