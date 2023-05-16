@@ -435,15 +435,15 @@ referencias a funciones y pasarlas como parámetro.
 - Son funciones con un bloque de Código que no tienen un nombre. Si en el ejemplo
 anterior no se quisiera definir una función, el atributo onPressed se podría definir
 así:
-  
+  ```bash
 floatingActionButton: FloatingActionButton(
 onPressed: () {
 _counter++;
 }, //fin función anónima
 tooltip: 'Increment',
 child: Icon(Icons.add),
-),
-  
+)
+ ``` 
 • List, es un conjunto de elementos
 • Map, conjunto llave valor
 • Todo es un widget!!
