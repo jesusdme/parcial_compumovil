@@ -9,17 +9,17 @@ archivo gradle del módulo
 • Se crean tres archivos
 • La actividad y el layout del mapa
 • Un nuevo tag en el manifest con
-**instrucciones para obtener un API KEY**
+## instrucciones para obtener un API KEY
 ```bash
 'com.google.android.gms:play-services-maps:18.0.2
 ```
-**API Key Secret**
+## API Key Secret
 La clave no debería incluirse en los elementos que se envían al
 repositorio, para esto se puede usar el archivo local.properties en la
 base del proyecto
 En el archivo manifest, se hace referencia a la llave secreta
 Interfaz de Usuario
-**Controles del mapa:**
+## Controles del mapa:
 • Habilitar los “gestures” como “pinch to zoom”
 ```bash
 mMap.uiSettings.isZoomGesturesEnabled = true
@@ -333,12 +333,17 @@ predeterminado que no toma argumentos y tiene captadores públicos para las prop
 que se van a asignar.
 ## Firebase Realtime Database – Escribir Objetos
 • Definir un objeto POJO, con getters públicos, y un constructor sin argumentos.
+  ```bash
 public class MyUser {
 var name: String = “” //...}
+  ```
 • Definir un path para todos los usuarios de la aplicación
+  ```bash
 //Root path of every user in FB
 const val PATH_USERS="users/"
+  ```
 • Una vez los datos esten completos, persistir el objeto
+  ```bash
 val myUser = MyUser()
 myUser.name = "Andrés"
 myUser.lastName = "Acevedo"
@@ -347,14 +352,17 @@ myUser.height = 1.80
 myUser.weight = 80.0
 myRef = database.getReference(PATH_USERS+auth.currentUser!!.uid)
 myRef.setValue(myUser)
-Firebase Realtime Database – Escribir Objetos
-Creación de índices
+  ```
+## Firebase Realtime Database – Escribir Objetos
+## Creación de índices
 • Se puede dejar a Firebase la tarea de generar índices para objetos que se quieran
 persistir usando el método push:
+  ```bash
 val key = myRef.push().key
 myRef = database.getReference(PATH_USERS + key)
 myRef.setValue(myUser)
-Firebase Realtime Database – Consulta Vs Suscripción
+  ```
+## Firebase Realtime Database – Consulta Vs Suscripción
 • El comportamiento típico de la base de datos dinámica de Firebase es suscribirse
 a todos los cambios que haya para algún dato (Path) en particular.
 • A diferencia de SQL, se recibe un evento cuando algún dato al interior del path
@@ -382,7 +390,7 @@ información relacionada.
 • Duplicar datos para mejorar rendimiento en relaciones
 bidireccionales.
 
-FLUTTER
+# FLUTTER
 • Flutter es un framework de desarrollo móvil,web y de escritorio
 (windows) creado por Google.
 • Presentado en 2015. La version 1 fue lanzado en diciembre de 2018.
@@ -399,7 +407,7 @@ para Android, y los de XCode para iOS
 - Si se desea probar la aplicación en iOS es necesario usar un computador con
 MacOS y XCode
 
-Estructura del Proyecto
+## Estructura del Proyecto
 • lib
 - Carpeta con el código fuente
 • test
@@ -409,7 +417,7 @@ Estructura del Proyecto
 • android e ios
 - Carpetas generadas automáticamente para
 cada plataforma destino
-DART
+## DART
 • Existe un tipo de dato dinámico que puede cambiar en ejecución. Para
 esto es necesario usar la palabra reservada Dynamic
 • Constructor
@@ -422,6 +430,7 @@ referencias a funciones y pasarlas como parámetro.
 - Son funciones con un bloque de Código que no tienen un nombre. Si en el ejemplo
 anterior no se quisiera definir una función, el atributo onPressed se podría definir
 así:
+  ```bash
 floatingActionButton: FloatingActionButton(
 onPressed: () {
 _counter++;
@@ -429,6 +438,7 @@ _counter++;
 tooltip: 'Increment',
 child: Icon(Icons.add),
 ),
+  ```
 • List, es un conjunto de elementos
 • Map, conjunto llave valor
 • Todo es un widget!!
@@ -453,16 +463,16 @@ TextField y Controladores
 asignarlo al textfield
 • Para saber lo que el usuario ingresó en el TextField se accede a la
 propiedad text del controlador
-IMÁGENES
+## IMÁGENES
 • Para almacenar las imágenes en la aplicación, se agregan a una
 carpeta dentro del proyecto y se referencian desde el archivo
 pubspec.yaml
-TEXTSFIELDS & CONTROLLERS
+## TEXTSFIELDS & CONTROLLERS
 • Para acceder al valor de un campo de texto en flutter, es necesario
 definir un controlador, y asignarlo al campo
 • Para saber lo que el usuario ingresó en el campo se accede a la
 propiedad text del controlador
-ACCESO A INTERFAZ
+## ACCESO A INTERFAZ
 • Dado que flutter se encarga del método build para construir el árbol
 de elementos, éstos no se pueden modificar de forma programática
 desde otras funciones de la clase.
@@ -473,7 +483,7 @@ estado del widget.
 modificar el estado con setState cuando sea necesario para lograr el
 efecto deseado.
 
-NAVEGACIÓN
+## NAVEGACIÓN
 • Para hacer una transición entre dos pantallas se usa el objeto Navigator
 de Flutter.
 Transición entre pantallas
@@ -492,13 +502,15 @@ aplicación: MaterialApp
 ruta puede estar en un archivo diferente pero deben importarse.
 • Una vez se tengan las rutas, se puede utilizar el método pushedNamed( )
 del Navigator:
+  ```bash
 void updateUI() {
 if (validateLogin()) {
 _userEmail = FirebaseAuth.instance.currentUser?.email;
 Navigator.of(context).pushNamed('/map');
 }
 }
-MANEJO DE ESTADOS
+  ```
+## MANEJO DE ESTADOS
 • Si bien se puede usar setState, esta práctica no es recomendable para
 aplicaciones más complejas que manejen diferentes estados en varias
 pantallas con muchos widgets.
@@ -507,8 +519,8 @@ responsabilidad del manejo del estado de cada widget y definir un
 funcionamiento basado en eventos.
 • Provider se puede entender como la implementación de un patron
 Observer para el estado de la aplicación.
-Provider
-Pasos para usar Provider
+## Provider
+## Pasos para usar Provider
 1. Agregar dependencias
 2. Definir el modelo para el estado
 3. Registrarlo en el contexto
@@ -516,7 +528,7 @@ Pasos para usar Provider
 1. Watch
 2. Read
 3. Select
-Asignación de Dependencias
+## Asignación de Dependencias
 • Dentro del archivo pubspec.yaml, es necesario agregar la dependencia de
 Provider:
 dev_dependencies:
@@ -530,7 +542,7 @@ pueden ejecutar los comandos:
 Definir el modelo para el estado
 • El modelo corresponde a una o varias clases que extienden de ChangeNotifier. En
 cada modificación del estado, se debe llamar a notifyListeners()
-Registro estado – contexto
+## Registro estado – contexto
 • Hay que identificar un ancestro común a todos los widgets que dependen del estado
 qué se esta definiendo. Si toda la aplicación depende del estado, este Widget puede ser
 MaterialApp
