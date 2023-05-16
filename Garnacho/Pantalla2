@@ -1,0 +1,60 @@
+//
+//  Pantalla2View.swift
+//  iOS_ICM
+//
+//  Created by Oscar M on 9/05/23.
+//
+
+import SwiftUI
+
+struct Pantalla2View: View {
+    
+    @Binding var nombreAntiguo:String
+    
+    @Binding var edadAntigua:Int
+    
+    @State var nuevoNombre = ""
+    
+    @State var nuevaEdad=0
+    
+    var body: some View {
+        VStack{
+            Spacer()
+            
+            HStack{
+                Text("Nuevo nombre:")
+                    .font(.title2)
+                    .foregroundColor(Color.blue)
+                    .bold(true)
+                    .padding(5)
+                
+                TextEditor(text: $nuevoNombre)
+                    .multilineTextAlignment(.leading)
+                    .background(Color.yellow)
+                    .frame(height: 50)
+                    .font(.title2)
+                    .accessibilityHint("Hint")
+                    
+                //Se utiliza para capturar un dato numerico, apartir de formatter es todo igual, no cambiar esos parametro
+                TextField("Ingrese su edad", value: $nuevaEdad, formatter: NumberFormatter(), onEditingChanged: { _ in }, onCommit: {})
+                    .background(Color.red)
+            }
+            
+            Spacer()
+            
+            Button("cambiar nombre"){
+                nombreAntiguo = nuevoNombre
+                edadAntigua = nuevaEdad
+            }
+            .font(.title)
+        }
+        .padding(10)
+    }
+}
+
+struct Pantalla2View_Previews: PreviewProvider {
+    static var previews: some View {
+        //Inicializar el objeto
+        Pantalla2View(nombreAntiguo: .constant("algo"), edadAntigua: .constant(0))
+    }
+}
