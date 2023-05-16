@@ -1,0 +1,73 @@
+//
+//  ContentView.swift
+//  iOS_ICM
+//
+//  Created by Oscar M on 9/05/23.
+//
+
+import SwiftUI
+
+struct ContentView: View {
+    //VARIABLES DE ENTRADA O ESTADOS
+    
+
+    @State var nombre = "Oscar Martinez" //Variables de estado
+    @State var edad = 10
+
+    @State var selection: Int? //=nulo
+    
+    var body: some View {
+        //OBJETOS
+        
+        NavigationView { //Navegar entre pantallas
+            VStack { //Vertical stack o layout (en un stack solo caben 10 vistas internas)
+                Image("img1") //SF-Symbols
+                    .resizable()
+                    .frame(width: 200, height: 200) //scaledToFit
+                    .padding(10)
+                    .background(Color.gray)
+                    .clipShape(Circle())//Recorte ciruclar
+                    .shadow(radius: 20)//Radio del circulo
+                    .overlay(Circle().stroke(Color.blue, lineWidth:10))//Linea contorno azul
+                Text(nombre)
+                    .font(.title)
+                    .foregroundColor(.blue)
+                Text(String(edad))
+                    .font(.title2)
+                    .foregroundColor(.green)
+                Text("PUJA")
+                    .foregroundColor(.red)
+                    .font(.title2)
+                Text("15")
+                    .font(.title3)
+                
+                Spacer() //Linea que divide la pantalla
+                
+                HStack { //Stack horizontal
+                    Button("Cambiar Nombre")
+                    {
+                        self.nombre = "Oscar Martinez"
+                    }
+                    .font(.headline)
+                    Spacer()
+                    //TAG y Selection coinciden, es un identificador para saber a que pantalla ir 
+                    NavigationLink(destination:Pantalla2View(nombreAntiguo: $nombre, edadAntigua: $edad), tag: 1, selection:  $selection)
+                    {
+                        Button("Ir Pantalla2") {
+                            selection = 1
+                        }
+                        .font(.headline)
+                    }
+                }
+                .navigationTitle("Barra de navegación")
+            }.padding(50)
+                
+        }
+    }
+}
+
+struct ContentView_Previews: PreviewProvider {
+    static var previews: some View {
+        ContentView()
+    }
+}
