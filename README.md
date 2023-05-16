@@ -256,8 +256,8 @@ emulador
 Crear o seleccionar Proyecto Firebase desde la consola (Entrar con cuenta
 Gmail)
 ## Registrar la App con Firebase
-3. Agregar el archivo de configuración de Firebase
-4. Ajustar las dependencias del Gradle para permitir autenticación
+ Agregar el archivo de configuración de Firebase
+ Ajustar las dependencias del Gradle para permitir autenticación
 ## Autenticación – Correo y Password
 • Definir los atributos de la actividad necesarios para la autenticación
 class semana10_E1 : 
@@ -646,12 +646,18 @@ Observer para el estado de la aplicación.
 ## Asignación de Dependencias
 • Dentro del archivo pubspec.yaml, es necesario agregar la dependencia de
 Provider:
+  
 dev_dependencies:
+  
 flutter_test:
+  
 sdk: flutter
+  
 provider: ^6.0.0
+  
 • Para actualizar las dependencias (si no se hace automáticamente), se
 pueden ejecutar los comandos:
+  
 • flutter clean
   
 • flutter pub get
